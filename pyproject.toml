@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "04-lab-q-jslee"
+version = "0.1.0"
+description = ""
+authors = ["Jong012 <Jong012>"]
+readme = "README.md"
+packages = [{include = "04_lab_q_jslee"}]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+django = ">=3.2,<4.0"
+djangorestframework = "^3.14.0"
+drf-yasg = "^1.21.4"
+django-debug-toolbar = "^3.7.0"
+django-dotenv = "^1.4.2"
+psycopg2 = "^2.9.5"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
