@@ -14,10 +14,21 @@
 
 # 기능 구현
 
+## 모델링
+
+### SeoulGu
+
+- DATA
+    - 강우량 구청명과 하수관 수위 구분명을 parsing 하여 SeoulGu Table 에 넣음
+    - 오픈 API 에서 csv 파일을 pkl 로 변환한 파일을 읽어들여서 DB에 넣기로 함
+- Field
+    - name: 구 이름
+    - rainfall_gu_code: 강우량 수위 API response 에서 **구분코드**
+    - water_level_gu_code: 하수관 수위 API query param 에 쓰일 **구청 코드**
+
 ## Query Parameter
 
-- Gubn: 구분코드
-- dateType(?): 일간, 시간, 분, 초 등등 시간 타입을 넣는다.
+- gu-name: 구 이름
 
 ## 기본요구사항
 
@@ -32,7 +43,6 @@
 
 # API 목록
 
-| METHOD | URL                       | QUERY_STRING | DESCRIPTION |
-|--------|---------------------------|--------------|-------------|
-| GET    | /api/flooding/water-level | GUBN_NAM     | 서울 하수관로     |
-| GET    | /api/flooding/rainfall    | GU_NAME      | 서울 강우량      |
+| METHOD | URL              | QUERY_STRING  | DESCRIPTION      |
+|--------|------------------|---------------|------------------|
+| GET    | /api/flooding/   | gu-name       | 구 이름으로 filtering |
