@@ -1,8 +1,8 @@
-from django.core.management import BaseCommand
 import pandas as pd
-from flooding.models import SeoulGu
+from django.core.management import BaseCommand
 
 from config.settings import BASE_DIR
+from flooding.models import SeoulGu
 
 CSV_DIR = f'{BASE_DIR}/../res/csv'
 
