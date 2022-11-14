@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # app
     'flooding',
+    'region',
     # third party
     'rest_framework',
     'drf_yasg',
