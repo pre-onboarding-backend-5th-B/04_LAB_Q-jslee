@@ -17,24 +17,11 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         """
-        pkl 파일을 읽어들여 서울시 구 이름을 읽어들인다.
+        pkl 파일에서 서울시 구 이름을 읽어들여서
+        SeoulGu DB 에 insert 시킨다.
         """
         df_water_level = pd.read_pickle(f'{CSV_DIR}/seoul_water_level_unique.pkl')
         df_water_level = df_water_level.sort_values(by=['구분명'])
-
-        df_rainfall = pd.read_pickle(f'{CSV_DIR}/seoul_rainfall_unique.pkl')
-        df_rainfall = df_rainfall.sort_values(by=['구청명'])
-        df_rainfall_rename = df_rainfall.rename(columns={'구청 코드': 'gu_code'})
-
         for row in df_water_level.itertuples(index=False):
             name = row.구분명 + '구'
             SeoulGu.objects.get_or_create(name=name, water_level_gu_code=row.구분코드)
-
-        for row in df_rainfall_rename.itertuples(index=False):
-            code = row.gu_code
-            SeoulGu.objects.update_or_create(
-                name=row.구청명,
-                defaults={
-                    'rainfall_gu_code': code
-                }
-            )
