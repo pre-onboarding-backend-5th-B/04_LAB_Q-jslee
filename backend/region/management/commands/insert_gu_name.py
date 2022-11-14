@@ -2,7 +2,7 @@ import pandas as pd
 from django.core.management import BaseCommand
 
 from config.settings import BASE_DIR
-from flooding.models import SeoulGu
+from region.models import SeoulGu
 
 CSV_DIR = f'{BASE_DIR}/../res/csv'
 
@@ -24,4 +24,5 @@ class Command(BaseCommand):
         df_water_level = df_water_level.sort_values(by=['구분명'])
         for row in df_water_level.itertuples(index=False):
             name = row.구분명 + '구'
-            SeoulGu.objects.get_or_create(name=name, water_level_gu_code=row.구분코드)
+            code = len(row.구분코드) == 2 and row.구분코드 or f'0{row.구분코드}'  # HACk: 구분코드가 한 자리면 앞에 0이 붙어야 함
+            SeoulGu.objects.get_or_create(name=name, water_level_gu_code=code)
