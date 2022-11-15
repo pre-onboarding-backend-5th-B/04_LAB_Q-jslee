@@ -25,10 +25,6 @@
     - name: 구 이름
     - water_level_gu_code: 하수관 수위 API query param 에 쓰일 **구청 코드**
 
-## Query Parameter
-
-- gu-name: 구 이름
-
 ## 기본요구사항
 
 1. 서울시 하수관로 수위 현황을 사용자에게 제공해줌
@@ -44,5 +40,5 @@
 
 | METHOD | URL | QUERY_STRING | DESCRIPTION |
 |--------|-----------------------|--------------|--|
-| GET | /api/flooding/ | gu-name | 강우량과 하수관 수위를 바탕으로 침수 정보를 사용자에게 알려줌 |
-| GET | /api/flooding/gu-name | | 서울 구이름을 사용자에게 알려줌 |
+| GET | /api/flooding/gu-name/ | gu-name | 강우량과 하수관 수위를 바탕으로 침수 정보를 사용자에게 알려줌 |
+| GET | /api/gu-name/ | | 서울 구이름을 사용자에게 알려줌 |
